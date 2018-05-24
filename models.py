@@ -1,6 +1,9 @@
 from google.appengine.ext import ndb
 
 class Work(ndb.Model):
+
+    work_text = ndb.StringProperty()
+
     title = ndb.StringProperty()
     description = ndb.StringProperty()
     quote = ndb.StringProperty()

@@ -45,21 +45,39 @@ class MainHandler(BaseHandler):
         params = {}
         return self.render_template("index.html", params=params)
 
-class Works_listHandler(BaseHandler):
+
+class WorksListHandler(BaseHandler):
     def get(self):
         params = {}
         return self.render_template("works_list.html", params=params)
 
-class WorkHandler(BaseHandler):
+
+class WorkDetailsHandler(BaseHandler):
     def get(self, work_id):
         work = Work.get_by_id(int(work_id))
         params = {"work": work}
         return self.render_template("work.html", params=params)
 
+
+class WorkEditHandler(BaseHandler):
+    def get(self, work_id):
+        work = Work.get_by_id(int(work_id))
+        params = {"work": work}
+        return self.render_template("work_edit.html", params=params)
+
+    def post(self, message_id):
+        new_text = self.request.get("some_text")
+            work = Work.get_by_id(int(work_id))
+            work.work_text = new_text
+            work.put()
+        return self.redirect_to("wrk-list")
+
+
 class AboutHandler(BaseHandler):
     def get(self):
         params = {}
         return self.render_template("about.html", params=params)
+
 
 class ContactHandler(BaseHandler):
     def get(self):
@@ -69,8 +87,9 @@ class ContactHandler(BaseHandler):
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
-    webapp2.Route("/works_list", Works_listHandler),
-    webapp2.Route('/work/<work_id:\d+>', WorkHandler),
+    webapp2.Route("/works_list", WorksListHandler, name="wrk-list"),
+    webapp2.Route('/work/<work_id:\d+>', WorkDetailsHandler),
+    webapp2.Route('/work/<work_id:\d+>/edit', WorkEditHandler),
     webapp2.Route('/about', AboutHandler),
     webapp2.Route("/contact", ContactHandler),
 ], debug=True)

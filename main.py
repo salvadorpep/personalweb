@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#Por defecto
 import os
 import jinja2
 import webapp2
+
+#Los que yo escojo
+from models import Work
 
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
@@ -47,8 +51,9 @@ class WorksHandler(BaseHandler):
         return self.render_template("works.html", params=params)
 
 class WorkHandler(BaseHandler):
-    def get(self):
-        params = {}
+    def get(self, work_id):
+        work = Work.get_by_id(int(work_id))
+        params = {"work": work}
         return self.render_template("work.html", params=params)
 
 class AboutHandler(BaseHandler):
@@ -65,7 +70,7 @@ class ContactHandler(BaseHandler):
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
     webapp2.Route("/works", WorksHandler),
-    webapp2.Route('/work', WorkHandler),
+    webapp2.Route('/work/<work_id:\d+>', WorkHandler),
     webapp2.Route('/about', AboutHandler),
     webapp2.Route("/contact", ContactHandler),
 ], debug=True)

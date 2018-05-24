@@ -45,10 +45,10 @@ class MainHandler(BaseHandler):
         params = {}
         return self.render_template("index.html", params=params)
 
-class WorksHandler(BaseHandler):
+class Works_listHandler(BaseHandler):
     def get(self):
         params = {}
-        return self.render_template("works.html", params=params)
+        return self.render_template("works_list.html", params=params)
 
 class WorkHandler(BaseHandler):
     def get(self, work_id):
@@ -69,7 +69,7 @@ class ContactHandler(BaseHandler):
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
-    webapp2.Route("/works", WorksHandler),
+    webapp2.Route("/works_list", Works_listHandler),
     webapp2.Route('/work/<work_id:\d+>', WorkHandler),
     webapp2.Route('/about', AboutHandler),
     webapp2.Route("/contact", ContactHandler),

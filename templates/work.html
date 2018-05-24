@@ -2,7 +2,8 @@
 
 {% block page_content %}
 
-
+<!-- #SI QUIERO UN VÍNCULO PARA EDITAR, PERO NO AQUÍ VERDAD? -->
+<!-- <a href="/message/{{ message.key.id() }}/edit">Edit message</a> -->
 
 
           <ul class="nav navbar-nav navbar-right navbar-small visible-md visible-lg">
@@ -23,39 +24,87 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <img src="./assets/images/work001-01.jpg" class="img-responsive" alt="">
+        <img src=" {{ work.image_top }} " class="img-responsive" alt="">
         <div class="card-container">
           <div class="text-center">
-            <h1 class="h2">001 : Fringilla sit amet</h1>
+            <h1 class="h2">001 : {{ work.title }} </h1>
           </div>
-          <p>Nulla facilisi. Vivamus vestibulum, elit in scelerisque ultricies, nisl nunc pulvinar ligula, id sodales arcu sapien in nisi. Quisque libero enim, mattis non augue posuere, venenatis dapibus urna.</p>
+          <p> {{ work.description }} </p>
 
           <blockquote>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</p>
-            <small class="pull-right">Irina Martin</small>
+            <p>" {{ work.quote }} "</p>
+            <small class="pull-right"> {{ work.quote_author }} </small>
           </blockquote>
         </div>
       </div>
 
 
-
       <div class="col-md-8 col-md-offset-2 section-container-spacer">
         <div class="row">
           <div class="col-xs-12 col-md-6">
-            <img src="./assets/images/work001-02.jpg" class="img-responsive" alt="">
-            <p>Menphis skyline</p>
+            <img src=" {{ work.image_one }} " class="img-responsive" alt="">
+            <p> {{ work.image_one_subtext }} </p>
           </div>
           <div class="col-xs-12 col-md-6">
-            <img src="./assets/images/work001-03.jpg" class="img-responsive" alt="">
-            <p>Menphis skyline</p>
+            <img src=" {{ work.image_two }} " class="img-responsive" alt="">
+            <p> {{ work.image_two_subtext }} </p>
           </div>
         </div>
       </div>
 
       <div class="col-xs-12">
-        <img src="./assets/images/work001-04.jpg" class="img-responsive" alt="">
+        <img src=" {{ work.link_video }} " class="img-responsive" alt="">
       </div>
 
+<!-- Ficha tecnica -->
+      <div class="col-md-8 col-md-offset-2 section-container-spacer">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <div class="card-container">
+              <div class="text-center">
+                <h1 class="h2">Fact Sheet: </h1>
+              </div>
+              <p> {{ work.format }} / {{ work.genre }} / {{ work.duration }} </p>
+              <p> {{ work.languages }} / {{ work.country }} / {{ work.year }} </p>
+              <p> Festival Release: {{ work.release_festival }} / Release Date: {{ work.release_date }} / Other Festivals: {{ work.festivals }} </p>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="card-container">
+              <div class="text-center">
+                <h1 class="h2">Crew: </h1>
+              </div>
+              <p> Cast: {{ work.cast }} </p>
+              <p> Director: {{ work.directed_by }} </p>
+              <p> Writter: {{ work.written_by }} </p>
+              <p> Production: {{ work.produced_by }} </p>
+              <p> Co-Production: {{ work.co_produced_by }} </p>
+              <p> Producer director: {{ work.director_producer }} </p>
+              <p> Executive producer: {{ work.executive_producer }} </p>
+              <p> Cinematographer: {{ work.cinematographer }} </p>
+              <p> Sound: {{ work.sound }} </p>
+              <p> Editor: {{ work.editing }} </p>
+              <p> Sound Design: {{ work.sound_design }} </p>
+              <p> Sound Mixing: {{ work.sound_mixing }} </p>
+              <p> Music: {{ work.music }} </p>
+              <p> Assistant Director: {{ work.assistant_director }} </p>
+              <p> Assistant Producer: {{ work.assistant_producer }} </p>
+              <p> Assistant Editor: {{ work.assistant_editor }} </p>
+              <p> Animation: {{ work.animation }} </p>
+              <p> VFX: {{ work.vfx }} </p>
+              <p> Digital Composer: {{ work.digital_composer }} </p>
+              <p> Colorist: {{ work.colorist }} </p>
+              <p> Graphic Design: {{ work.graphic_design }} </p>
+              <p> Subtitles: {{ work.subtitles }} </p>
+              <p> Sound Studio: {{ work.sound_studio }} </p>
+              <p> Images Postproduction / DCP: {{ work.image_postproduction_and_dcp }} </p>
+              <p> International Sales Agent: {{ work.international_sales_and_festivals }} </p>  
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End Ficha tecnica -->
     </div>
   </div>
 </div>
